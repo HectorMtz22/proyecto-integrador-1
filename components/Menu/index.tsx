@@ -2,7 +2,7 @@
 import { ReactElement } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { FaHouse } from "react-icons/fa6";
+import { FaHouse, FaWarehouse } from "react-icons/fa6";
 import styles from "./menu.module.css";
 
 export const Menu = () => {
@@ -11,7 +11,7 @@ export const Menu = () => {
       <Element title="Inicio" icon={<FaHouse />} destination="/" />
       <Element
         title="Inventario"
-        icon={<FaHouse />}
+        icon={<FaWarehouse />}
         destination="/inventario"
       />
     </nav>
@@ -32,7 +32,7 @@ const Element = ({
   const className = styles.element + " " + (isActive ? styles.active : "");
   return (
     <Link href={destination} className={className}>
-      {icon}
+      <span className={styles.icon}>{icon}</span>
       <h3>{title}</h3>
     </Link>
   );

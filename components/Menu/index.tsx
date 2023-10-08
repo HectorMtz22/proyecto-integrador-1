@@ -28,11 +28,10 @@ const Element = ({
 }) => {
   const pathName = usePathname();
   const isActive = pathName === destination;
+  const className = styles.element + " " + (isActive ? styles.active : "");
+  console.log(className);
   return (
-    <Link
-      href={destination}
-      className={styles.element + isActive && styles.active}
-    >
+    <Link href={destination} className={className}>
       {icon}
       <h3>{title}</h3>
     </Link>

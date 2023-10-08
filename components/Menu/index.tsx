@@ -1,5 +1,6 @@
+"use client";
 import { ReactElement } from "react";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { FaHouse } from "react-icons/fa6";
 import styles from "./menu.module.css";
@@ -25,8 +26,13 @@ const Element = ({
   icon: ReactElement;
   destination: string;
 }) => {
+  const pathName = usePathname();
+  const isActive = pathName === destination;
   return (
-    <Link href={destination} className={styles.element}>
+    <Link
+      href={destination}
+      className={styles.element + isActive && styles.active}
+    >
       {icon}
       <h3>{title}</h3>
     </Link>

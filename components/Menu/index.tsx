@@ -8,10 +8,11 @@ import styles from "./menu.module.css";
 export const Menu = () => {
   return (
     <nav className={styles.menu}>
+      <Element title="Inicio" icon={<FaHouse />} destination="/" />
       <Element
-        title="Requisiciones"
+        title="Inventario"
         icon={<FaHouse />}
-        destination="/requisiciones"
+        destination="/inventario"
       />
     </nav>
   );
@@ -29,7 +30,6 @@ const Element = ({
   const pathName = usePathname();
   const isActive = pathName === destination;
   const className = styles.element + " " + (isActive ? styles.active : "");
-  console.log(className);
   return (
     <Link href={destination} className={className}>
       {icon}

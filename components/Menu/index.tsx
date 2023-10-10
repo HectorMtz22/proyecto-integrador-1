@@ -10,6 +10,7 @@ import {
   FaWarehouse,
 } from "react-icons/fa6";
 import styles from "./menu.module.css";
+import { Element } from "../MenuItem";
 
 export const Menu = () => {
   return (
@@ -17,7 +18,7 @@ export const Menu = () => {
       <Element title="Inicio" icon={<FaHouse />} destination="/" />
       <Element
         title="Inventario"
-        icon={<FaWarehouse />}
+        icon={FaWarehouse()}
         destination="/inventario"
       />
       <Element
@@ -36,25 +37,5 @@ export const Menu = () => {
         destination="/complementos"
       />
     </nav>
-  );
-};
-
-const Element = ({
-  title,
-  icon,
-  destination,
-}: {
-  title: string;
-  icon: ReactElement;
-  destination: string;
-}) => {
-  const pathName = usePathname();
-  const isActive = pathName === destination;
-  const className = styles.element + " " + (isActive ? styles.active : "");
-  return (
-    <Link href={destination} className={className}>
-      <span className={styles.icon}>{icon}</span>
-      <h3>{title}</h3>
-    </Link>
   );
 };

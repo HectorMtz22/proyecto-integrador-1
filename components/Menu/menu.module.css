@@ -12,19 +12,3 @@
   left: 0;
   bottom: 0;
 }
-
-.element {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px 10px;
-}
-
-.active {
-  background-color: var(--secondary);
-  color: var(--gray-6);
-}
-
-.icon {
-  font-size: 3rem;
-}

@@ -12,3 +12,8 @@
   left: 0;
   bottom: 0;
 }
+
+.inline {
+  background-color: var(--primary);
+  color: var(--gray-2);
+}

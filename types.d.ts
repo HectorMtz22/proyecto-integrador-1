@@ -1,7 +1,7 @@
 export type MenuProps = {
   data: {
     title: string;
-    icon: ReactElement;
+    icon?: ReactElement;
     destination: string;
   }[];
   inline?: boolean;

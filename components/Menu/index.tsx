@@ -12,30 +12,23 @@ import {
 import styles from "./menu.module.css";
 import { Element } from "../MenuItem";
 
-export const Menu = () => {
+type MenuProps = {
+  title: string;
+  icon: ReactElement;
+  destination: string;
+}[];
+
+export const Menu = (data: MenuProps) => {
   return (
     <nav className={styles.menu}>
-      <Element title="Inicio" icon={<FaHouse />} destination="/" />
-      <Element
-        title="Inventario"
-        icon={FaWarehouse()}
-        destination="/inventario"
-      />
-      <Element
-        title="Ingredientes"
-        icon={<FaBoxOpen />}
-        destination="/ingredientes"
-      />
-      <Element
-        title="Platillos"
-        icon={<FaUtensils />}
-        destination="/platillos"
-      />
-      <Element
-        title="Complementos"
-        icon={<FaPlateWheat />}
-        destination="/complementos"
-      />
+      {data.map((item) => (
+        <Element
+          key={item.title}
+          title={item.title}
+          icon={item.icon}
+          destination={item.destination}
+        />
+      ))}
     </nav>
   );
 };

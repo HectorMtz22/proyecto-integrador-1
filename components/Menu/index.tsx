@@ -1,24 +1,10 @@
 "use client";
 import { ReactElement } from "react";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
-import {
-  FaBoxOpen,
-  FaHouse,
-  FaPlateWheat,
-  FaUtensils,
-  FaWarehouse,
-} from "react-icons/fa6";
 import styles from "./menu.module.css";
 import { Element } from "../MenuItem";
+import { MenuProps } from "@/types";
 
-type MenuProps = {
-  title: string;
-  icon: ReactElement;
-  destination: string;
-}[];
-
-export const Menu = (data: MenuProps) => {
+export const Menu = ({ data, inline }: MenuProps) => {
   return (
     <nav className={styles.menu}>
       {data.map((item) => (
@@ -27,6 +13,7 @@ export const Menu = (data: MenuProps) => {
           title={item.title}
           icon={item.icon}
           destination={item.destination}
+          inline={inline}
         />
       ))}
     </nav>

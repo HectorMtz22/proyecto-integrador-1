@@ -15,7 +15,9 @@ export const Element = ({
   inline?: boolean;
 }) => {
   const pathName = usePathname();
-  const isActive = pathName === destination;
+  const res = !inline ? pathName.split("/")[1] : pathName.substring(1);
+  const isActive = res === destination.substring(1);
+
   let className;
   if (inline) {
     className = `${styles.element} ${styles.inline} ${

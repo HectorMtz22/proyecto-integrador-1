@@ -21,6 +21,10 @@
   color: var(--gray-6);
 }
 
+.inline.active {
+  background-color: var(--third);
+}
+
 .icon {
   font-size: 3rem;
 }

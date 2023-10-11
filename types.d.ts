@@ -5,4 +5,5 @@ export type MenuProps = {
     destination: string;
   }[];
   inline?: boolean;
+  title?: string;
 };

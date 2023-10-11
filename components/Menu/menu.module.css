@@ -17,3 +17,12 @@
   background-color: var(--primary);
   color: var(--gray-2);
 }
+
+.title {
+  text-align: center;
+  color: var(--font-primary);
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+}

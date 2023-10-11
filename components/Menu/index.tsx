@@ -8,6 +8,7 @@ export const Menu = ({ data, inline }: MenuProps) => {
   let className = `${styles.menu} ${inline && styles.inline}`;
   return (
     <nav className={className}>
+      {inline && <h2 className={styles.title}>Inventario</h2>}
       {data.map((item) => (
         <Element
           key={item.title}

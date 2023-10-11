@@ -1,3 +1,7 @@
 export default function Requisicion() {
-  return <h2>Requisición</h2>;
+  return (
+    <div>
+      <h2>Requisición</h2>
+    </div>
+  );
 }

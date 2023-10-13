@@ -6,6 +6,11 @@ const nextConfig = {
                 source: '/inventario',
                 destination: '/inventario/requisicion',
                 permanent: true
+            },
+            {
+                source: '/ingredientes',
+                destination: '/ingredientes/listado',
+                permanent: true
             }
         ]
     },

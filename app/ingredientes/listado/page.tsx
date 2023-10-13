@@ -1,7 +1,16 @@
-export default function IngredientesPage() {
+import { getIngredients } from "@/services/Ingredients";
+
+export default async function IngredientesPage() {
+  const data = await getIngredients();
+  console.log(data);
   return (
     <>
-      <h1>Listado</h1>
+      {data.map((item: any) => (
+        <section key={item.id}>
+          <h1>{item.name}</h1>
+          <p>{item.description}</p>
+        </section>
+      ))}
     </>
   );
 }

@@ -1,0 +1,21 @@
+.container {
+  width: 100%;
+  padding: 50px;
+}
+
+.list {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.list th {
+  background-color: var(--third);
+  color: aliceblue;
+}
+
+.list td,
+.list th {
+  padding: 1rem;
+  font-size: 1.2rem;
+}

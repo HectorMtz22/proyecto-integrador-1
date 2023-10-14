@@ -4,7 +4,10 @@ import { Gabarito } from "next/font/google";
 import { data } from "./menu";
 import "./globals.css";
 
-const gabarito = Gabarito({ subsets: ["latin"] });
+const gabarito = Gabarito({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Requisiciones",

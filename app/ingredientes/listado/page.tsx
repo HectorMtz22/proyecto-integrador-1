@@ -1,16 +1,25 @@
 "use client";
+import { useEffect, useState } from "react";
 import { getIngredients } from "@/services/Ingredients";
 import styles from "./listado.module.css";
-import { useEffect, useState } from "react";
 
 export default function IngredientesPage() {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
-    getIngredients().then((response) => {
-      setData(response.data);
-    });
+    setLoading(true);
+    getIngredients()
+      .then((res) => {
+        setData(res);
+      })
+      .catch(() => {
+        console.log("Connection error");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
-  console.log(data);
+  if (loading) return <div>Loading...</div>;
   return (
     <main className={styles.container}>
       <h1>Lista de Ingredientes</h1>

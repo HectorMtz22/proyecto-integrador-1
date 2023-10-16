@@ -6,6 +6,7 @@ export default function AgregarIngrediente() {
   const router = useRouter();
   const { register, handleSubmit, formState } = useForm();
 
+  const errors = Object.keys(formState.errors);
   const submit = (data: any) => {
     console.log(data);
     router.push("/ingredientes");
@@ -14,11 +15,15 @@ export default function AgregarIngrediente() {
   return (
     <form onSubmit={handleSubmit(submit)}>
       <h1>Agregar Ingrediente</h1>
-      {formState.errors?.name && (
-        <p className="error">El nombre del ingrediente es requerido</p>
+      {Boolean(errors.length) && (
+        <span className="error">Campos Requeridos</span>
       )}
       <input
         {...register("name", { required: true })}
+        placeholder="Nombre del Ingrediente"
+      />
+      <input
+        {...register("type", { required: true })}
         placeholder="Nombre del Ingrediente"
       />
       <button>Enviar</button>

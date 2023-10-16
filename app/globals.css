@@ -15,7 +15,7 @@
   --third-alt: hsla(7, 91%, 66%, 1);
   --third-back: hsla(290, 14%, 9%, 1);
 
-  --error: hsla(350, 80%, 26%, 1);
+  --error: rgb(178, 20, 46);
   --success: hsla(137, 90%, 51%, 1);
   --warn: hsla(43, 90%, 51%, 1);
 
@@ -54,7 +54,7 @@ form {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 600px;
+  max-width: 600px;
   margin: auto;
 }
 
@@ -74,10 +74,17 @@ button {
   font-size: 1rem;
   font-weight: 600;
   transition: all 0.2s ease-in-out;
+  &:hover {
+    background-color: var(--primary-alt);
+  }
 }
 
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
+}
+
+.error {
+  color: var(--error);
 }

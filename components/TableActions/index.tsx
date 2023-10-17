@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import styles from "./actions.module.css";
 
 type TableActionsProps = {
   id: string;
@@ -8,13 +9,13 @@ type TableActionsProps = {
 
 export const TableActions = ({ id, section }: TableActionsProps) => {
   return (
-    <>
-      <Link href={`/${section}/editar/${id}`}>
+    <aside className={styles.container}>
+      <Link href={`/${section}/editar/${id}`} className={styles.icon}>
         <FaEdit />
       </Link>
-      <Link href={`/${section}/eliminar/${id}`}>
+      <Link href={`/${section}/eliminar/${id}`} className={styles.delete}>
         <FaTrash />
       </Link>
-    </>
+    </aside>
   );
 };

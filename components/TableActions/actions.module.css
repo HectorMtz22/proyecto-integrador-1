@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+:is(.icon, .delete) {
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+:is(.icon, .delete):hover {
+  transform: scale(1.2);
+  color: var(--primary-alt);
+}
+
+.delete:hover {
+  color: var(--error);
+}

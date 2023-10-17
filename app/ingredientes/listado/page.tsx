@@ -1,5 +1,6 @@
 import { getIngredients } from "@/services/Ingredients";
 import styles from "./listado.module.css";
+import { TableActions } from "@/components/TableActions";
 
 export default async function IngredientesPage() {
   const data = await getIngredients();
@@ -23,6 +24,9 @@ export default async function IngredientesPage() {
               <td>{item.name}</td>
               <td>
                 {item.existence} {item.unit}
+              </td>
+              <td>
+                <TableActions id={item.id} section="ingredientes" />
               </td>
             </tr>
           ))}

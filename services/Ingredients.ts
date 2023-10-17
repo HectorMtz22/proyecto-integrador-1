@@ -9,14 +9,5 @@ export const getIngredients = async () => {
 export const getIngredientsList = async () => {
   return await fetch(`${URL}/Group/`, {
     cache: "no-store",
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-
-      return data.map((data: any) => ({
-        name: data.group_Name,
-        id: data.group_ID,
-      }));
-    });
+  }).then((res) => res.json());
 };

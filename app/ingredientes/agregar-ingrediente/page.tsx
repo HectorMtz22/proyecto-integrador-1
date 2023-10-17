@@ -18,7 +18,7 @@ export default function AgregarIngrediente() {
   const errors = Object.keys(formState.errors);
   const submit = (data: any) => {
     console.log(data);
-    router.push("/ingredientes");
+    // router.push("/ingredientes");
   };
 
   return (
@@ -34,12 +34,13 @@ export default function AgregarIngrediente() {
       />
       <article className="row">
         <input
-          {...register("stock", { required: true })}
+          type="number"
+          {...register("existence", { required: true })}
           placeholder="Cantidad en existencia"
         />
         <input {...register("unit", { required: true })} placeholder="Unidad" />
       </article>
-      <select {...register("group", { required: true })}>
+      <select {...register("group_id", { required: true })}>
         <option value="">Selecciona un grupo</option>
         {ingredientList.map((item: any) => (
           <option key={item.id} value={item.id}>

@@ -37,6 +37,7 @@ export default function AgregarIngrediente() {
           placeholder="Nombre del Ingrediente"
           autoFocus
           messageError="El nombre es requerido"
+          required
         />
         <article className="row">
           <Input
@@ -49,6 +50,7 @@ export default function AgregarIngrediente() {
           <Input name="unit" placeholder="Unidad" required />
         </article>
         <Input
+          name="group_id"
           type="select"
           required
           messageError="Selecciona el grupo adecuado"

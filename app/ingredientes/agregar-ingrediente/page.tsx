@@ -4,6 +4,7 @@ import { getIngredientsList, postIngredient } from "@/services/Ingredients";
 import { useRouter } from "next/navigation";
 import { FormProvider, useForm } from "react-hook-form";
 import Input from "@/components/Input";
+import Button from "@/components/Button";
 
 export default function AgregarIngrediente() {
   const [ingredientList, setIngredientList] = useState([]);
@@ -62,7 +63,7 @@ export default function AgregarIngrediente() {
             </option>
           ))}
         </Input>
-        <button>Enviar</button>
+        <Button type="primary">Enviar</Button>
       </form>
     </FormProvider>
   );

@@ -70,19 +70,6 @@ form .row {
   gap: 1rem;
 }
 
-button {
-  cursor: pointer;
-  border-radius: var(--radius);
-  background-color: var(--primary);
-  color: var(--font-primary);
-  font-size: 1rem;
-  font-weight: 600;
-  transition: all 0.2s ease-in-out;
-  &:hover {
-    background-color: var(--primary-alt);
-  }
-}
-
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

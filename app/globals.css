@@ -63,17 +63,10 @@ form h1 {
   margin: 2rem 0;
 }
 
-form :is(input, textarea, select, button) {
-  margin: 0.5rem 0;
-  padding: 1rem;
-  border-radius: var(--radius);
-  border: none;
-  width: 100%;
-}
-
 form .row {
   display: flex;
   width: 100%;
+  align-items: end;
   gap: 1rem;
 }
 

@@ -2,13 +2,14 @@
 import { useEffect, useState } from "react";
 import { getIngredientsList, postIngredient } from "@/services/Ingredients";
 import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
+import Input from "@/components/Input";
 
 export default function AgregarIngrediente() {
   const [ingredientList, setIngredientList] = useState([]);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
-  const { register, handleSubmit, formState } = useForm();
+  const methods = useForm();
 
   useEffect(() => {
     getIngredientsList().then((res) => {
@@ -16,8 +17,8 @@ export default function AgregarIngrediente() {
     });
   }, []);
 
-  const errors = Object.keys(formState.errors);
   const submit = (data: any) => {
+    console.log(data);
     postIngredient(data)
       .then((res) => {
         console.log(res);
@@ -29,34 +30,34 @@ export default function AgregarIngrediente() {
   };
 
   return (
-    <form onSubmit={handleSubmit(submit)}>
-      <h1>Agregar Ingrediente</h1>
-      {error && <span className="error">{error}</span>}
-      {Boolean(errors.length) && (
-        <span className="error">Campos Requeridos</span>
-      )}
-      <input
-        {...register("name", { required: true })}
-        placeholder="Nombre del Ingrediente"
-        autoFocus
-      />
-      <article className="row">
-        <input
-          type="number"
-          {...register("existence", { required: true })}
-          placeholder="Cantidad en existencia"
+    <FormProvider {...methods}>
+      <form onSubmit={methods.handleSubmit(submit)}>
+        <h1>Agregar Ingrediente</h1>
+        <Input
+          name="name"
+          placeholder="Nombre del Ingrediente"
+          autoFocus
+          required=""
         />
-        <input {...register("unit", { required: true })} placeholder="Unidad" />
-      </article>
-      <select {...register("group_id", { required: true })}>
-        <option value="">Selecciona un grupo</option>
-        {ingredientList.map((item: any) => (
-          <option key={item.id} value={item.id}>
-            {item.name}
-          </option>
-        ))}
-      </select>
-      <button>Enviar</button>
-    </form>
+        <article className="row">
+          <Input
+            name="existence"
+            type="number"
+            placeholder="Cantidad en existencia"
+            required
+          />
+          <Input name="unit" placeholder="Unidad" />
+        </article>
+        <select {...methods.register("group_id", { required: true })}>
+          <option value="">Selecciona un grupo</option>
+          {ingredientList.map((item: any) => (
+            <option key={item.id} value={item.id}>
+              {item.name}
+            </option>
+          ))}
+        </select>
+        <button>Enviar</button>
+      </form>
+    </FormProvider>
   );
 }

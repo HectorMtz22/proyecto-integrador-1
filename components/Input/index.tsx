@@ -1,19 +1,35 @@
-import { useFormContext } from "react-hook-form";
+import { InputHTMLAttributes } from "react";
+import { FieldValue, useFormContext } from "react-hook-form";
 import styles from "./input.module.css";
 
-export default function Input({ name, required, type, ...rest }: any) {
+interface InputProps extends InputHTMLAttributes<FieldValue<HTMLInputElement>> {
+  messageError?: string;
+}
+
+export default function Input(props: InputProps) {
+  const {
+    name = "na",
+    required,
+    messageError = "Este campo es requerido",
+    ...rest
+  } = props;
   const {
     register,
     formState: { errors },
   } = useFormContext();
 
-  const errorLabel =
-    typeof required !== "boolean" ? required : "Este campo es requerido";
-
+  const typeInput =
+    props.type === "select" ? (
+      <select {...register(name, { required })} {...rest}>
+        {props.children}
+      </select>
+    ) : (
+      <input {...register(name, { required })} {...rest} />
+    );
   return (
     <section className={styles.container}>
-      {errors[name] && <span className="error">{errorLabel}</span>}
-      <input type={type} {...register(name, { required })} {...rest} />
+      {errors[name] && <span className="error">{messageError}</span>}
+      {typeInput}
     </section>
   );
 }

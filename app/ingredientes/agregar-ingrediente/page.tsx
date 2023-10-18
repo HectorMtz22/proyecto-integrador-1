@@ -18,44 +18,48 @@ export default function AgregarIngrediente() {
   }, []);
 
   const submit = (data: any) => {
-    console.log(data);
-    postIngredient(data)
-      .then((res) => {
-        console.log(res);
-        router.push("/ingredientes");
-      })
-      .catch(() => {
-        setError("Error al guardar el ingrediente");
-      });
+    postIngredient(data).then((res) => {
+      if (res.error) {
+        setError(res.error);
+        return;
+      }
+      router.push("/ingredientes");
+    });
   };
 
   return (
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(submit)}>
         <h1>Agregar Ingrediente</h1>
+        {error && <span className="error">{error}</span>}
         <Input
           name="name"
           placeholder="Nombre del Ingrediente"
           autoFocus
-          required=""
+          messageError="El nombre es requerido"
         />
         <article className="row">
           <Input
             name="existence"
             type="number"
             placeholder="Cantidad en existencia"
+            messageError="La cantidad es requerida"
             required
           />
-          <Input name="unit" placeholder="Unidad" />
+          <Input name="unit" placeholder="Unidad" required />
         </article>
-        <select {...methods.register("group_id", { required: true })}>
+        <Input
+          type="select"
+          required
+          messageError="Selecciona el grupo adecuado"
+        >
           <option value="">Selecciona un grupo</option>
           {ingredientList.map((item: any) => (
             <option key={item.id} value={item.id}>
               {item.name}
             </option>
           ))}
-        </select>
+        </Input>
         <button>Enviar</button>
       </form>
     </FormProvider>

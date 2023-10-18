@@ -1,11 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
-import { getIngredientsList } from "@/services/Ingredients";
+import { getIngredientsList, postIngredient } from "@/services/Ingredients";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
 export default function AgregarIngrediente() {
   const [ingredientList, setIngredientList] = useState([]);
+  const [error, setError] = useState<string | null>(null);
   const router = useRouter();
   const { register, handleSubmit, formState } = useForm();
 
@@ -17,13 +18,20 @@ export default function AgregarIngrediente() {
 
   const errors = Object.keys(formState.errors);
   const submit = (data: any) => {
-    console.log(data);
-    // router.push("/ingredientes");
+    postIngredient(data)
+      .then((res) => {
+        console.log(res);
+        router.push("/ingredientes");
+      })
+      .catch(() => {
+        setError("Error al guardar el ingrediente");
+      });
   };
 
   return (
     <form onSubmit={handleSubmit(submit)}>
       <h1>Agregar Ingrediente</h1>
+      {error && <span className="error">{error}</span>}
       {Boolean(errors.length) && (
         <span className="error">Campos Requeridos</span>
       )}

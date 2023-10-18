@@ -9,3 +9,11 @@ export type MenuItemProps = {
   destination: string;
   icon?: ReactElement;
 };
+
+export type Ingredient = {
+  id?: number;
+  group_id: number;
+  existence: number;
+  name: string;
+  unit: string;
+};

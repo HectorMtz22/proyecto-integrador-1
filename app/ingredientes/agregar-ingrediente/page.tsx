@@ -24,7 +24,8 @@ export default function AgregarIngrediente() {
         router.push("/ingredientes");
       })
       .catch((err) => {
-        setError(err);
+        console.log(err);
+        setError(err.error);
       });
   };
 

@@ -23,5 +23,5 @@ export const postIngredient = async (ingredient: Ingredient) => {
     body: JSON.stringify(ingredient),
   })
     .then((res) => res.json())
-    .then((data) => (data.error ? Promise.reject(data.error) : data));
+    .then((data) => (data.error ? Promise.reject(data) : data));
 };

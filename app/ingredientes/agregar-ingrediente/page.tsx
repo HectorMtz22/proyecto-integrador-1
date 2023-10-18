@@ -18,13 +18,13 @@ export default function AgregarIngrediente() {
   }, []);
 
   const submit = (data: any) => {
-    postIngredient(data).then((res) => {
-      if (res.error) {
-        setError(res.error);
-        return;
-      }
-      router.push("/ingredientes");
-    });
+    postIngredient(data)
+      .then((res) => {
+        router.push("/ingredientes");
+      })
+      .catch((err) => {
+        setError(err);
+      });
   };
 
   return (

@@ -3,19 +3,23 @@ import Button from "@/components/Button";
 import Input from "@/components/Input";
 import { postIngredientGroup } from "@/services/Ingredients";
 import { IngredientGroup } from "@/types";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+
 export default function AddGroup() {
+  const router = useRouter();
   const methods = useForm<IngredientGroup>();
   const [error, setError] = useState<string | null>(null);
 
   const submit: SubmitHandler<IngredientGroup> = (data) => {
     postIngredientGroup(data)
-      .then((res) => {
-        console.log(res);
+      .then(() => {
+        router.push("/ingredientes/grupos");
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((err: Error) => {
+        console.error(err);
+        setError(err.message);
       });
   };
 

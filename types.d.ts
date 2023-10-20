@@ -24,3 +24,7 @@ export type IngredientGroup = {
   description: string;
   hexColor: string;
 };
+
+export type GetIngredientGroup = IngredientGroup & {
+  id: number;
+};

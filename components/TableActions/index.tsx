@@ -3,7 +3,7 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import styles from "./actions.module.css";
 
 type TableActionsProps = {
-  id: string;
+  id: number;
   section: string;
 };
 

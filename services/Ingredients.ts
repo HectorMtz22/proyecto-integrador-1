@@ -1,5 +1,5 @@
 import statusCodes from "@/helpers/statusCodes";
-import { Ingredient, IngredientGroup } from "@/types";
+import { GetIngredientGroup, Ingredient, IngredientGroup } from "@/types";
 
 const URL = process.env.NEXT_PUBLIC_API_URI;
 export const getIngredients = async () => {
@@ -9,7 +9,7 @@ export const getIngredients = async () => {
   }).then((res) => res.json());
 };
 
-export const getIngredientsList = async () => {
+export const getIngredientsList = async (): Promise<GetIngredientGroup[]> => {
   return await fetch(`${URL}/Group/`, {
     cache: "no-store",
   }).then((res) => res.json());

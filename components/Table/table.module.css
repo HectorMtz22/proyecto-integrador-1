@@ -1,0 +1,16 @@
+.table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.table th {
+  background-color: var(--third);
+  color: aliceblue;
+}
+
+.table td,
+.table th {
+  padding: 1rem;
+  font-size: 1.2rem;
+}

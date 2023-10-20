@@ -17,3 +17,10 @@ export type Ingredient = {
   name: string;
   unit: string;
 };
+
+export type IngredientGroup = {
+  id?: number;
+  name: string;
+  description: string;
+  hexColor: string;
+};

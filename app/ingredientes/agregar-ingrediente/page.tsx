@@ -2,15 +2,16 @@
 import { useEffect, useState } from "react";
 import { getIngredientsList, postIngredient } from "@/services/Ingredients";
 import { useRouter } from "next/navigation";
-import { FormProvider, useForm } from "react-hook-form";
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
+import { Ingredient } from "@/types";
 
 export default function AgregarIngrediente() {
   const [ingredientList, setIngredientList] = useState([]);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
-  const methods = useForm();
+  const methods = useForm<Ingredient>();
 
   useEffect(() => {
     getIngredientsList().then((res) => {
@@ -18,7 +19,7 @@ export default function AgregarIngrediente() {
     });
   }, []);
 
-  const submit = (data: any) => {
+  const submit: SubmitHandler<Ingredient> = (data) => {
     postIngredient(data)
       .then((res) => {
         router.push("/ingredientes");

@@ -1,4 +1,5 @@
-import { Ingredient } from "@/types";
+import statusCodes from "@/helpers/statusCodes";
+import { Ingredient, IngredientGroup } from "@/types";
 
 const URL = process.env.NEXT_PUBLIC_API_URI;
 export const getIngredients = async () => {
@@ -21,7 +22,21 @@ export const postIngredient = async (ingredient: Ingredient) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(ingredient),
-  })
-    .then((res) => res.json())
-    .then((data) => (data.error ? Promise.reject(data) : data));
+  }).then((res) => {
+    if (!res.ok) throw new Error(statusCodes(res.status));
+    return res.json();
+  });
+};
+
+export const postIngredientGroup = async (group: IngredientGroup) => {
+  return await fetch(`${URL}/Group/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(group),
+  }).then((res) => {
+    if (!res.ok) throw new Error(statusCodes(res.status));
+    return res.json();
+  });
 };

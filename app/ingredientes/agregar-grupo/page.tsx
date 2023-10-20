@@ -18,7 +18,7 @@ export default function AddGroup() {
         router.push("/ingredientes/grupos");
       })
       .catch((err: Error) => {
-        console.error(err);
+        console.warn(err);
         setError(err.message);
       });
   };

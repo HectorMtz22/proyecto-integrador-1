@@ -21,12 +21,12 @@ export default function AgregarIngrediente() {
 
   const submit: SubmitHandler<Ingredient> = (data) => {
     postIngredient(data)
-      .then((res) => {
+      .then(() => {
         router.push("/ingredientes");
       })
-      .catch((err) => {
-        console.log(err);
-        setError(err.error);
+      .catch((err: Error) => {
+        console.warn(err);
+        setError(err.message);
       });
   };
 

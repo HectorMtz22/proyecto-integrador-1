@@ -40,3 +40,12 @@ export const postIngredientGroup = async (group: IngredientGroup) => {
     return res.json();
   });
 };
+
+export const deleteIngredient = async (id: number) => {
+  return await fetch(`${URL}/Ingredient/${id}`, {
+    method: "DELETE",
+  }).then((res) => {
+    console.log(res);
+    return res.json();
+  });
+};

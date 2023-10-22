@@ -3,11 +3,17 @@ import styles from "./listado.module.css";
 import { TableActions } from "@/components/TableActions";
 
 export default async function IngredientesPage() {
-  const data = await getIngredients();
+  let error = "";
+  const data = await getIngredients().catch((err: Error) => {
+    console.error(err);
+    error = "Ocurrió un error al obtener los ingredientes";
+    return [];
+  });
 
   return (
     <main className={styles.container}>
       <h1>Lista de Ingredientes</h1>
+      {error && <h3 className="error">{error}</h3>}
       <table className={styles.list}>
         <thead>
           <tr>

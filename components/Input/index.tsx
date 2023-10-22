@@ -3,32 +3,34 @@ import { FieldValue, useFormContext } from "react-hook-form";
 import styles from "./input.module.css";
 
 interface InputProps extends InputHTMLAttributes<FieldValue<HTMLInputElement>> {
-  messageError?: string;
+  requiredMessage?: boolean | string | undefined;
 }
 
-export default function Input(props: InputProps) {
-  const {
-    name = "na",
-    required,
-    messageError = "Este campo es requerido",
-    ...rest
-  } = props;
+export default function Input({
+  name = "na",
+  requiredMessage,
+  ...rest
+}: InputProps) {
   const {
     register,
     formState: { errors },
   } = useFormContext();
 
   const typeInput =
-    props.type === "select" ? (
-      <select {...register(name, { required })} {...rest}>
-        {props.children}
+    rest.type === "select" ? (
+      <select {...register(name, { required: requiredMessage })} {...rest}>
+        {rest.children}
       </select>
     ) : (
-      <input {...register(name, { required })} {...rest} />
+      <input {...register(name, { required: requiredMessage })} {...rest} />
     );
   return (
     <section className={styles.container}>
-      {errors[name] && <span className="error">{messageError}</span>}
+      {errors[name] && (
+        <span className="error">
+          {errors[name]?.message?.toString() || "Este campo es requerido"}
+        </span>
+      )}
       {typeInput}
     </section>
   );

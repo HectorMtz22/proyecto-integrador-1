@@ -5,10 +5,12 @@ import { useRouter } from "next/navigation";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
-import { Ingredient } from "@/types";
+import { GetIngredientGroup, Ingredient } from "@/types";
 
 export default function AgregarIngrediente() {
-  const [ingredientList, setIngredientList] = useState([]);
+  const [ingredientList, setIngredientList] = useState<GetIngredientGroup[]>(
+    []
+  );
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
   const methods = useForm<Ingredient>();
@@ -39,24 +41,21 @@ export default function AgregarIngrediente() {
           name="name"
           placeholder="Nombre del Ingrediente"
           autoFocus
-          messageError="El nombre es requerido"
-          required
+          requiredMessage="El nombre es requerido"
         />
         <article className="row">
           <Input
             name="existence"
             type="number"
             placeholder="Cantidad en existencia"
-            messageError="La cantidad es requerida"
-            required
+            requiredMessage="La cantidad es requerida"
           />
-          <Input name="unit" placeholder="Unidad" required />
+          <Input name="unit" placeholder="Unidad" requiredMessage />
         </article>
         <Input
           name="group_id"
           type="select"
-          required
-          messageError="Selecciona el grupo adecuado"
+          requiredMessage="Selecciona el grupo adecuado"
         >
           <option value="">Selecciona un grupo</option>
           {ingredientList.map((item: any) => (

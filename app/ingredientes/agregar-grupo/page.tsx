@@ -32,14 +32,12 @@ export default function AddGroup() {
           name="name"
           placeholder="Nombre del Grupo"
           autoFocus
-          messageError="El nombre es requerido"
-          required
+          requiredMessage="El nombre es requerido"
         />
         <Input
           name="description"
           placeholder="Descripción"
-          messageError="La descripción es requerida"
-          required
+          requiredMessage="La descripción es requerida"
         />
         <Button type="primary">Agregar</Button>
       </form>

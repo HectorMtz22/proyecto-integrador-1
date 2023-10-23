@@ -1,11 +1,15 @@
 import statusCodes from "@/helpers/statusCodes";
 import { GetIngredientGroup, Ingredient, IngredientGroup } from "@/types";
+import { revalidatePath } from "next/cache";
 
 const URL = process.env.NEXT_PUBLIC_API_URI;
 export const getIngredients = async () => {
   console.log(URL);
   return await fetch(`${URL}/Ingredient/`, {
     cache: "no-store",
+    next: {
+      tags: ["ingredients"],
+    },
   }).then((res) => res.json());
 };
 
@@ -44,8 +48,5 @@ export const postIngredientGroup = async (group: IngredientGroup) => {
 export const deleteIngredient = async (id: number) => {
   return await fetch(`${URL}/Ingredient/${id}`, {
     method: "DELETE",
-  }).then((res) => {
-    console.log(res);
-    return res.json();
   });
 };

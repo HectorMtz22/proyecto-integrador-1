@@ -6,25 +6,14 @@ import { DeleteButton } from "./DeleteButton";
 type TableActionsProps = {
   id: number;
   section: string;
-  handleDelete: () => void;
 };
 
-export const TableActions = ({
-  id,
-  section,
-  handleDelete,
-}: TableActionsProps) => {
+export const TableActions = ({ id, section }: TableActionsProps) => {
   return (
     <aside className={styles.container}>
-      <Link href={`/${section}/editar/${id}`} className={styles.icon}>
+      <Link href={`/${section}/editar/${id}`} className={styles.icon} hidden>
         <FaEdit />
       </Link>
-      <Link href={`/${section}/eliminar/${id}`} className={styles.delete}>
-        <FaTrash />
-      </Link>
-      <span className={styles.delete} onClick={handleDelete}>
-        <FaTrash />
-      </span>
       <DeleteButton id={id} />
     </aside>
   );

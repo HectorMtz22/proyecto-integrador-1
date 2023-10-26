@@ -11,7 +11,12 @@ const nextConfig = {
                 source: '/ingredientes',
                 destination: '/ingredientes/listado',
                 permanent: true
-            }
+            },
+            // {
+            //     source: '/platillos',
+            //     destination: '/platillos/listado',
+            //     permanent: true
+            // }
         ]
     },
 }

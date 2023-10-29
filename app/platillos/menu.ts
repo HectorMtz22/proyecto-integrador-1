@@ -5,4 +5,8 @@ export const menu: MenuItemProps[] = [
     title: "Listado",
     destination: "/platillos",
   },
+  {
+    title: "Nuevo",
+    destination: "/platillos/nuevo",
+  },
 ];

@@ -28,3 +28,26 @@ export type IngredientGroup = {
 export type GetIngredientGroup = IngredientGroup & {
   id: number;
 };
+
+type List = {
+  id: number;
+  name: string;
+};
+
+export type Dish = {
+  id?: number;
+  name: string;
+  assamble: boolean;
+  temperature: "Frío" | "Caliente" | "Irrelevante";
+  last_made: string;
+  services: number;
+  rating: number;
+  complement: List;
+  sauce: List;
+  protein: List;
+  type: List;
+};
+
+export type DishGroup = {
+  [key: string]: Dish[];
+};

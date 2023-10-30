@@ -1,4 +1,4 @@
-import { Dish, DishGroup } from "@/types";
+import { Dish, DishGroup, Extras } from "@/types";
 
 const API = process.env.NEXT_PUBLIC_API_URI;
 export const getDishes = () => {
@@ -17,4 +17,10 @@ export const getDishes = () => {
         return prev;
       }, {});
     });
+};
+
+export const getExtras = (): Promise<Extras> => {
+  return fetch(`${API}/Extra`, {
+    cache: "no-store",
+  }).then((res) => res.json());
 };

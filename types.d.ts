@@ -1,3 +1,5 @@
+import { types } from "util";
+
 export type MenuProps = {
   data: MenuItemProps[];
   inline?: boolean;
@@ -50,4 +52,11 @@ export type Dish = {
 
 export type DishGroup = {
   [key: string]: Dish[];
+};
+
+export type Extras = {
+  proteins: List[];
+  sauces: List[];
+  complements: List[];
+  types: List[];
 };

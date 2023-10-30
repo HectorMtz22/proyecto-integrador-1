@@ -1,4 +1,5 @@
 import { Dish, DishGroup, Extras } from "@/types";
+import statusCodes from "@/helpers/statusCodes";
 
 const API = process.env.NEXT_PUBLIC_API_URI;
 export const getDishes = () => {
@@ -23,4 +24,17 @@ export const getExtras = (): Promise<Extras> => {
   return fetch(`${API}/Extra`, {
     cache: "no-store",
   }).then((res) => res.json());
+};
+
+export const postDish = (dish: Dish) => {
+  return fetch(`${API}/Dish`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ ...dish, assamble: true }),
+  }).then((res) => {
+    if (!res.ok) throw new Error(statusCodes(res.status));
+    return res.json();
+  });
 };

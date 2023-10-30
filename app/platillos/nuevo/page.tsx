@@ -1,23 +1,36 @@
 "use client";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
-import { getExtras } from "@/services/Dishes";
+import { getExtras, postDish } from "@/services/Dishes";
 import { Dish, Extras, List } from "@/types";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 export default function AddDishPage() {
   const [extras, setExtras] = useState<Extras | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const methods = useForm<Dish>();
+  const router = useRouter();
   useEffect(() => {
     getExtras().then(setExtras);
   }, []);
-  const submit: SubmitHandler<Dish> = (data) => console.log(data);
+  const submit: SubmitHandler<Dish> = (data) => {
+    postDish(data)
+      .then(() => {
+        router.push("/platillos");
+      })
+      .catch((err: Error) => {
+        console.warn(err);
+        setError(err.message);
+      });
+  };
 
   if (!extras) return <p>Cargando...</p>;
   return (
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(submit)}>
         <h1>Agregar Platillo</h1>
+        {error && <span className="error">{error}</span>}
         <Input
           name="name"
           placeholder="Escribe el nombre del platillo"

@@ -1,0 +1,19 @@
+/* const styles = {
+  main: {
+    width: "100vw",
+    height: "100vh",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+}; */
+
+.main {
+  margin: auto;
+  /* width: 100vw; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

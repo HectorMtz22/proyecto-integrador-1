@@ -5,6 +5,10 @@ type ButtonProps = {
   children: string;
 };
 
-export default function Button({ children, type }: ButtonProps) {
-  return <button className={styles.button}>{children}</button>;
+export default function Button({ children, type, ...rest }: ButtonProps) {
+  return (
+    <button className={styles.button} {...rest}>
+      {children}
+    </button>
+  );
 }

@@ -60,3 +60,14 @@ export type Extras = {
   complements: List[];
   types: List[];
 };
+
+export type Kind = {
+  id: number;
+  name: string;
+};
+
+export type PostExtra = {
+  description: string;
+  kind_id: number;
+  name: string;
+};

@@ -1,11 +1,13 @@
 "use client";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
+import Select from "@/components/Select";
 import { getExtras, postDish } from "@/services/Dishes";
-import { Dish, Extras, List } from "@/types";
+import { Dish, Extras } from "@/types";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+
 export default function AddDishPage() {
   const [extras, setExtras] = useState<Extras | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -66,19 +68,3 @@ export default function AddDishPage() {
     </FormProvider>
   );
 }
-
-type SelectProps = {
-  name: string;
-  label: string;
-  data: List[];
-};
-const Select = ({ name, data, label }: SelectProps) => (
-  <Input type="select" name={`${name}_id`} requiredMessage>
-    <option value="">Selecciona {label}</option>
-    {data.map((el) => (
-      <option key={el.id} value={el.id}>
-        {el.name}
-      </option>
-    ))}
-  </Input>
-);

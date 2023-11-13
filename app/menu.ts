@@ -3,7 +3,7 @@ import {
   FaHouse,
   FaPlateWheat,
   FaUtensils,
-  FaWarehouse,
+  FaFileLines,
 } from "react-icons/fa6";
 
 export const data = [
@@ -13,9 +13,9 @@ export const data = [
     destination: "/",
   },
   {
-    title: "Inventario",
-    icon: FaWarehouse(),
-    destination: "/inventario",
+    title: "Recetas",
+    icon: FaFileLines(),
+    destination: "/recetas",
   },
   {
     title: "Ingredientes",

@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 6rem;
+  /* padding: 6rem; */
   min-height: 100vh;
 }
 
@@ -226,4 +226,9 @@
   to {
     transform: rotate(0deg);
   }
+}
+
+.iframe {
+  width: calc(100vw - 10rem);
+  height: 100vh;
 }

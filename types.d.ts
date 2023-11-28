@@ -71,3 +71,10 @@ export type PostExtra = {
   kind_id: number;
   name: string;
 };
+
+export type Recipe = {
+  id: number;
+  dish: string;
+  ingredients: Ingredient[];
+  count: number;
+};

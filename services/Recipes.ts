@@ -1,24 +1,31 @@
+import { Recipe } from "@/types";
+
 const URL = process.env.NEXT_PUBLIC_API_URI;
 
-const MOCK_RECIPES = [
+const MOCK_RECIPES: Recipe[] = [
   {
     dish: "string",
     id: 0,
     ingredients: [
       {
-        amount: 0,
+        group_id: 0,
+        existence: 0,
         id: 0,
         name: "string",
         unit: "string",
       },
     ],
+    count: 3,
   },
 ];
-export const getRecipes = async () => {
+export const getRecipes = async (): Promise<Recipe[]> => {
   const response = await fetch(`${URL}/Recipe`, {
     cache: "no-store",
   });
-  const data: [] = await response.json();
+  const data: Recipe[] = await response.json();
   if (data.length === 0) return MOCK_RECIPES;
-  return data;
+  return data.map((recipe) => ({
+    ...recipe,
+    count: recipe.ingredients.length,
+  }));
 };

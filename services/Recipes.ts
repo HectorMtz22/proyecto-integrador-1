@@ -15,7 +15,9 @@ const MOCK_RECIPES = [
   },
 ];
 export const getRecipes = async () => {
-  const response = await fetch(`${URL}/Recipe`);
+  const response = await fetch(`${URL}/Recipe`, {
+    cache: "no-store",
+  });
   const data: [] = await response.json();
   if (data.length === 0) return MOCK_RECIPES;
   return data;

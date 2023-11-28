@@ -1,0 +1,10 @@
+[
+  {
+    "title": "Listado",
+    "destination": "/recetas"
+  },
+  {
+    "title": "Nueva Receta",
+    "destination": "/recetas/nuevo"
+  }
+]

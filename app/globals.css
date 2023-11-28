@@ -79,3 +79,8 @@ form .row {
 .error {
   color: var(--error);
 }
+
+.container {
+  width: 100%;
+  padding: 50px;
+}

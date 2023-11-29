@@ -5,7 +5,7 @@ type ButtonProps = Omit<
   "type"
 > & {
   type: "primary" | "secondary" | "danger" | "success";
-  children: string;
+  children: string | React.ReactElement;
 };
 
 export default function Button({ children, type, ...rest }: ButtonProps) {

@@ -20,7 +20,11 @@ export const RecipeItem = ({ count, name, isLink, id }: RecipeItemProps) => {
   };
   const handleDelete = (e: any) => {
     e.stopPropagation();
-    console.log("Eliminando receta");
+    const confirm = window.confirm("¿Estás seguro de eliminar la receta?");
+    if (confirm) {
+      console.log("Eliminando receta");
+      router.refresh();
+    }
   };
   return (
     <main className={styles.container} onClick={handleClick}>
@@ -34,10 +38,9 @@ export const RecipeItem = ({ count, name, isLink, id }: RecipeItemProps) => {
       </section>
       <section>
         <h2>Acciones</h2>
-        <Button type="primary" onClick={(e) => handleDelete(e)}>
+        <Button type="danger" onClick={(e) => handleDelete(e)}>
           <article>
-            <FaTrash />
-            <span>Eliminar</span>
+            <FaTrash /> <span>Eliminar</span>
           </article>
         </Button>
       </section>

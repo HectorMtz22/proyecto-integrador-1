@@ -15,3 +15,13 @@
 .button:hover {
   background-color: var(--primary-alt);
 }
+
+.danger {
+  background-color: var(--error);
+  color: var(--gray-input);
+}
+
+.danger:hover {
+  background-color: var(--error);
+  opacity: 0.8;
+}

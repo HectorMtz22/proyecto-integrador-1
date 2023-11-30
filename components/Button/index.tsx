@@ -9,8 +9,10 @@ type ButtonProps = Omit<
 };
 
 export default function Button({ children, type, ...rest }: ButtonProps) {
+  let className = styles.button;
+  if (type === "danger") className += " " + styles.danger;
   return (
-    <button {...rest} className={styles.button}>
+    <button {...rest} className={className}>
       {children}
     </button>
   );

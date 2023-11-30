@@ -1,7 +1,11 @@
 .listado {
-  padding: 1rem;
+  padding: 50px;
 }
 
 .listado section {
   padding: 2rem;
+}
+
+.element {
+  padding: 0.4rem 1rem;
 }

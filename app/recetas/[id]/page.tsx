@@ -18,6 +18,7 @@ export default async function RecipeById({
           key={ingredient.id}
           id={ingredient.id}
           name={ingredient.name}
+          count={`${ingredient.existence} ${ingredient.unit}`}
           isLink={false}
         />
       ))}

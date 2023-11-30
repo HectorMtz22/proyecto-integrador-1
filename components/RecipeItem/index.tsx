@@ -7,7 +7,7 @@ import { redirect, useRouter } from "next/navigation";
 type RecipeItemProps = {
   id?: number;
   name: string;
-  count?: number | string;
+  count: number | string;
   isLink?: boolean;
 };
 

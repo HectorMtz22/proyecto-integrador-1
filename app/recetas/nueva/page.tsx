@@ -2,9 +2,10 @@
 import Button from "@/components/Button";
 import Input from "@/components/Input";
 import Select from "@/components/Select";
-import { getDishes, getDishesList } from "@/services/Dishes";
+import { getDishesList } from "@/services/Dishes";
 import { getIngredients } from "@/services/Ingredients";
-import { Dish, Ingredient, List, Recipe } from "@/types";
+import { postRecipe } from "@/services/Recipes";
+import { List, Recipe } from "@/types";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
@@ -24,15 +25,14 @@ export default function NuevaRecetaPage() {
   if (!ingredients || !dishes) return <p>Cargando...</p>;
 
   const submit: SubmitHandler<Recipe> = (data) => {
-    console.log(data);
-    // postDish(data)
-    //   .then(() => {
-    //     router.push("/platillos");
-    //   })
-    //   .catch((err: Error) => {
-    //     console.warn(err);
-    //     setError(err.message);
-    //   });
+    postRecipe(data)
+      .then(() => {
+        router.push("/recetas");
+      })
+      .catch((err: Error) => {
+        console.warn(err);
+        setError(err.message);
+      });
   };
   return (
     <FormProvider {...methods}>

@@ -29,3 +29,13 @@ export const getRecipes = async (): Promise<Recipe[]> => {
     count: recipe.ingredients.length,
   }));
 };
+
+export const postRecipe = async (recipe: Recipe) => {
+  return await fetch(`${URL}/Recipe`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(recipe),
+  });
+};

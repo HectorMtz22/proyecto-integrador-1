@@ -30,6 +30,13 @@ export const getRecipes = async (): Promise<Recipe[]> => {
   }));
 };
 
+export const getRecipe = async (id: number): Promise<Recipe> => {
+  const response = await fetch(`${URL}/Recipe/${id}`, {
+    cache: "no-store",
+  });
+  return await response.json();
+};
+
 export const postRecipe = async (recipe: Recipe) => {
   return await fetch(`${URL}/Recipe`, {
     method: "POST",

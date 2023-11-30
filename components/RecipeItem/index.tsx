@@ -7,7 +7,7 @@ import { redirect, useRouter } from "next/navigation";
 type RecipeItemProps = {
   id?: number;
   name: string;
-  count: number | string;
+  count?: number | string;
   isLink?: boolean;
 };
 
@@ -20,7 +20,7 @@ export const RecipeItem = ({ count, name, isLink, id }: RecipeItemProps) => {
   };
   const handleDelete = (e: any) => {
     e.stopPropagation();
-    const confirm = window.confirm("¿Estás seguro de eliminar la receta?");
+    const confirm = window.confirm("¿Estás seguro de eliminar el elemento?");
     if (confirm) {
       console.log("Eliminando receta");
       router.refresh();

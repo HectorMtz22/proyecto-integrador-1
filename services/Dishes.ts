@@ -38,3 +38,9 @@ export const postDish = (dish: Dish) => {
     return res.json();
   });
 };
+
+export const getDishesList = () => {
+  return fetch(`${API}/Dish`, {
+    cache: "no-store",
+  }).then((res) => res.json());
+};

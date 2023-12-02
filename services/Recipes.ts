@@ -46,3 +46,9 @@ export const postRecipe = async (recipe: Recipe) => {
     body: JSON.stringify(recipe),
   });
 };
+
+export const deleteRecipe = async (id: number) => {
+  return await fetch(`${URL}/Recipe/${id}`, {
+    method: "DELETE",
+  });
+};

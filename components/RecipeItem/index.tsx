@@ -2,7 +2,8 @@
 import styles from "./styles.module.css";
 import { FaTrash } from "react-icons/fa6";
 import Button from "@/components/Button";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { deleteRecipe } from "@/services/Recipes";
 
 type RecipeItemProps = {
   id?: number;
@@ -23,6 +24,9 @@ export const RecipeItem = ({ count, name, isLink, id }: RecipeItemProps) => {
     const confirm = window.confirm("¿Estás seguro de eliminar el elemento?");
     if (confirm) {
       console.log("Eliminando receta");
+      if (!isLink && id) {
+        deleteRecipe(id);
+      }
       router.refresh();
     }
   };

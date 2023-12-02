@@ -2,6 +2,7 @@ import { getRecipe } from "@/services/Recipes";
 import styles from "./receta.module.css";
 import { RecipeItem } from "@/components/RecipeItem";
 import { GoBack } from "@/components/GoBack";
+import { redirect } from "next/navigation";
 
 export default async function RecipeById({
   params,
@@ -9,8 +10,10 @@ export default async function RecipeById({
   params: { id: string };
 }) {
   const { id } = params;
-  const data = await getRecipe(Number(id));
-  console.log(data);
+  const data = await getRecipe(Number(id)).catch(() => {
+    redirect("/recetas");
+  });
+  // console.log(data);
   return (
     <main className={styles.container}>
       <h1>

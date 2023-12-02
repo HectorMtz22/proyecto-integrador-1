@@ -37,14 +37,14 @@ export default function NuevaRecetaPage() {
   return (
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(submit)}>
-        <h1>Agregar Nueva Receta</h1>
+        <h1>Agregar Ingredientes</h1>
         {error && <span className="error">{error}</span>}
         <Select data={dishes} label="Nombre del platillo" name="dish" />
         <Select data={ingredients} label="Ingrediente" name="ingredient" />
         <Input
           type="number"
           name="existence"
-          placeholder="Cantidad en Existencia"
+          placeholder="Cantidad Necesaria"
           requiredMessage="Escribe la cantidad en existencia"
         />
         <Button type="primary">Agregar</Button>

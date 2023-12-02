@@ -83,5 +83,5 @@ form .row {
 .container {
   width: 100%;
   padding: 50px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }

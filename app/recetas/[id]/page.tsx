@@ -1,6 +1,7 @@
 import { getRecipe } from "@/services/Recipes";
 import styles from "./receta.module.css";
 import { RecipeItem } from "@/components/RecipeItem";
+import { GoBack } from "@/components/GoBack";
 
 export default async function RecipeById({
   params,
@@ -12,7 +13,10 @@ export default async function RecipeById({
   console.log(data);
   return (
     <main className={styles.container}>
-      <h1>{data.dish}</h1>
+      <h1>
+        <GoBack />
+        {data.dish}
+      </h1>
       {data.ingredients.map((ingredient) => (
         <RecipeItem
           key={ingredient.id}

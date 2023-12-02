@@ -40,14 +40,16 @@ export const RecipeItem = ({ count, name, isLink, id }: RecipeItemProps) => {
         <p>Cantidad:</p>
         <h2>{count}</h2>
       </section>
-      <section>
-        <h2>Acciones</h2>
-        <Button type="danger" onClick={(e) => handleDelete(e)}>
-          <article>
-            <FaTrash /> <span>Eliminar</span>
-          </article>
-        </Button>
-      </section>
+      {!isLink && (
+        <section>
+          <h2>Acciones</h2>
+          <Button type="danger" onClick={(e) => handleDelete(e)}>
+            <article>
+              <FaTrash /> <span>Eliminar</span>
+            </article>
+          </Button>
+        </section>
+      )}
     </main>
   );
 };

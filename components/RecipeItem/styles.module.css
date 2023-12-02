@@ -1,7 +1,8 @@
 .container {
   width: 80%;
-  display: grid;
-  grid-template-columns: 2fr 1fr 150px;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
   margin: 2rem;
   padding: 1rem;
   border: 1px solid #ccc;
@@ -12,4 +13,8 @@
 
 .container:hover {
   background-color: var(--primary);
+}
+
+.container section:first-child {
+  width: 20ch;
 }
